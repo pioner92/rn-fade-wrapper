@@ -41,6 +41,4 @@ RCT_CUSTOM_VIEW_PROPERTY(sizeLeft, float, FadeViewOldArch) {
   return view;
 }
 
-RCT_EXPORT_VIEW_PROPERTY(color, NSString)
-
 @end
