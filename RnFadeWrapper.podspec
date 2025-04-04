@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   s.pod_target_xcconfig = {
     "DEFINES_MODULE" => "YES",
     "SWIFT_COMPILATION_MODE" => "wholemodule",
-    "CLANG_CXX_LANGUAGE_STANDARD" => "c++20",
+    "CLANG_CXX_LANGUAGE_STANDARD" => "c++17",
   }
 
   s.preserve_paths = [

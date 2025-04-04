@@ -38,7 +38,23 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "native-component",
+    "react-native-component",
+    "react-native-wrapper",
+    "react-native-fade",
+    "react-native-fade-wrapper",
+    "react-native-fade-in",
+    "react-native-fade-out",
+    "react-native-fade-container",
+    "react-native-fade-view",
+    "react-native-fade",
+    "react-native-fade-in-out",
+    "fade",
+    "fade-wrapper",
+    "fade-gradient",
+    "react-native-gradient",
+    "react-native-fade-gradient"
   ],
   "repository": {
     "type": "git",
