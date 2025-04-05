@@ -4,7 +4,11 @@ import UIKit
 
 @objcMembers
 public class FadeViewCore: UIView {
-  var containerBounds: CGRect?
+  private var containerBounds: CGRect?
+
+  private let shapeLayer = CAShapeLayer()
+
+  private var savedSubview: UIView?
 
   public var fadeColor: UIColor = .white {
     didSet {
@@ -21,7 +25,7 @@ public class FadeViewCore: UIView {
 
   public var fadeSizeTop = 0.0 {
     didSet {
-        updateSizeTop(size: fadeSizeTop)
+      updateSizeTop(size: fadeSizeTop)
     }
   }
 
@@ -46,7 +50,7 @@ public class FadeViewCore: UIView {
   }
 
   private func updateSizeTop(size: CGFloat) {
-    if(size == 0){
+    if size == 0 {
       gradientLayerTop.isHidden = true
       return
     }
@@ -60,8 +64,7 @@ public class FadeViewCore: UIView {
   }
 
   private func updateSizeBottom(size: CGFloat) {
-
-    if(size == 0){
+    if size == 0 {
       gradientLayerBottom.isHidden = true
       return
     }
@@ -76,7 +79,7 @@ public class FadeViewCore: UIView {
   }
 
   private func updateSizeRight(size: CGFloat) {
-    if(size == 0){
+    if size == 0 {
       gradientLayerRight.isHidden = true
       return
     }
@@ -90,7 +93,7 @@ public class FadeViewCore: UIView {
   }
 
   private func updateSizeLeft(size: CGFloat) {
-    if(size == 0){
+    if size == 0 {
       gradientLayerLeft.isHidden = true
       return
     }
@@ -152,14 +155,33 @@ public class FadeViewCore: UIView {
     super.init(coder: coder)
   }
 
+  func initShapeLayer() {
+    guard let savedSubview else { return }
 
-  func initSubviewBounds(subview: UIView){
+    let fillPath = UIBezierPath(rect: savedSubview.bounds)
+
+    let outPath = UIBezierPath(roundedRect: savedSubview.bounds, cornerRadius: savedSubview.layer.cornerRadius)
+
+    fillPath.append(outPath)
+    fillPath.usesEvenOddFillRule = true
+
+    shapeLayer.path = fillPath.cgPath
+    shapeLayer.fillRule = .evenOdd
+    shapeLayer.fillColor = fadeColor.cgColor
+
+    savedSubview.layer.addSublayer(shapeLayer)
+  }
+
+  func initSubviewBounds(subview: UIView) {
     containerBounds = subview.bounds
+    savedSubview = subview
 
     self.updateSizeTop(size: self.fadeSizeTop)
     self.updateSizeRight(size: self.fadeSizeRight)
     self.updateSizeBottom(size: self.fadeSizeBottom)
     self.updateSizeLeft(size: self.fadeSizeLeft)
+
+    initShapeLayer()
 
     subview.layer.addSublayer(gradientLayerTop)
     subview.layer.addSublayer(gradientLayerBottom)
