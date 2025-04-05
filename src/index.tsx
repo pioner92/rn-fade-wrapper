@@ -40,7 +40,7 @@ const makePreset = (
   };
 };
 
-export const RnFadeWrapperView: React.FC<React.PropsWithChildren<IProps>> = ({
+export const FadeWrapper: React.FC<React.PropsWithChildren<IProps>> = ({
   children,
   color,
   size = 20,

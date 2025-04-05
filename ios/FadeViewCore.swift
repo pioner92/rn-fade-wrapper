@@ -37,9 +37,7 @@ public class FadeViewCore: UIView {
 
   public var fadeSizeRight = 0.0 {
     didSet {
-      DispatchQueue.main.async {
-        self.updateSizeRight(size: self.fadeSizeRight)
-      }
+        updateSizeRight(size: fadeSizeRight)
     }
   }
 
@@ -107,8 +105,8 @@ public class FadeViewCore: UIView {
   }
 
   var gradientColors: [CGColor] = [
-    UIColor.red.cgColor,
-    UIColor.red.withAlphaComponent(0).cgColor,
+    UIColor.white.cgColor,
+    UIColor.white.withAlphaComponent(0).cgColor,
   ]
 
   let gradientLayerTop: CAGradientLayer = {

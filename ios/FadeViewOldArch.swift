@@ -16,13 +16,8 @@ public class FadeViewOldArch: FadeViewCore {
   override public func layoutSubviews() {
     super.layoutSubviews()
 
-    let bigestSubview = subviews.max(
-      by: { $0.frame.size.height < $1.frame.size.height
-      })
-    guard let bigestSubview else { return }
+    guard let bigestSubview = self.subviews.first else { return }
 
     super.initSubviewBounds(subview: bigestSubview)
-
-
   }
 }

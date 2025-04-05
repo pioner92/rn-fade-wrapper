@@ -1,10 +1,10 @@
 import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
-import { RnFadeWrapperView } from 'rn-fade-wrapper';
+import { FadeWrapper } from 'rn-fade-wrapper';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <RnFadeWrapperView
+      <FadeWrapper
         color={'red'}
         sizes={{
           top: 20,
@@ -16,7 +16,7 @@ export default function App() {
         <TouchableOpacity style={styles.button}>
           <Text style={{ color: 'white' }}>PRESS</Text>
         </TouchableOpacity>
-      </RnFadeWrapperView>
+      </FadeWrapper>
     </View>
   );
 }
