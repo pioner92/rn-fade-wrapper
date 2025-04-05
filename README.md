@@ -1,4 +1,4 @@
-# rn-fade-wrapper
+# Fade wrapper for React Native
 
 A simple and performant native wrapper component for React Native that adds customizable **fade gradients** to the edges of its children. Ideal for scrollable content or overlays where subtle fading is needed.
 
