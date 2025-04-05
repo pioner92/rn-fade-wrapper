@@ -37,7 +37,7 @@ public class FadeViewCore: UIView {
 
   public var fadeSizeRight = 0.0 {
     didSet {
-        updateSizeRight(size: fadeSizeRight)
+      updateSizeRight(size: fadeSizeRight)
     }
   }
 
@@ -59,6 +59,14 @@ public class FadeViewCore: UIView {
       width: containerBounds?.width ?? 0,
       height: size
     )
+
+    let isReversed = size < 0
+
+    let start = CGPoint(x: 0.5, y: 1)
+    let end = CGPoint(x: 0.5, y: 0)
+
+    gradientLayerTop.startPoint = isReversed ? end : start
+    gradientLayerTop.endPoint = isReversed ? start : end
   }
 
   private func updateSizeBottom(size: CGFloat) {
@@ -74,6 +82,14 @@ public class FadeViewCore: UIView {
       width: containerBounds?.width ?? 0,
       height: size
     )
+
+    let isReversed = size < 0
+
+    let start = CGPoint(x: 0.5, y: 0)
+    let end = CGPoint(x: 0.5, y: 1)
+
+    gradientLayerBottom.startPoint = isReversed ? end : start
+    gradientLayerBottom.endPoint = isReversed ? start : end
   }
 
   private func updateSizeRight(size: CGFloat) {
@@ -88,6 +104,14 @@ public class FadeViewCore: UIView {
       width: size,
       height: containerBounds?.height ?? 0
     )
+
+    let isReversed = size < 0
+
+    let start = CGPoint(x: 0, y: 0.5)
+    let end = CGPoint(x: 1, y: 0.5)
+
+    gradientLayerRight.startPoint = isReversed ? end : start
+    gradientLayerRight.endPoint = isReversed ? start : end
   }
 
   private func updateSizeLeft(size: CGFloat) {
@@ -102,6 +126,14 @@ public class FadeViewCore: UIView {
       width: size,
       height: containerBounds?.height ?? 0
     )
+
+    let isReversed = size < 0
+
+    let start = CGPoint(x: 1, y: 0.5)
+    let end = CGPoint(x: 0, y: 0.5)
+
+    gradientLayerLeft.startPoint = isReversed ? end : start
+    gradientLayerLeft.endPoint = isReversed ? start : end
   }
 
   var gradientColors: [CGColor] = [
@@ -179,7 +211,9 @@ public class FadeViewCore: UIView {
     self.updateSizeBottom(size: self.fadeSizeBottom)
     self.updateSizeLeft(size: self.fadeSizeLeft)
 
-    initShapeLayer()
+    if subview.layer.cornerRadius > 0 {
+      initShapeLayer()
+    }
 
     subview.layer.addSublayer(gradientLayerTop)
     subview.layer.addSublayer(gradientLayerBottom)

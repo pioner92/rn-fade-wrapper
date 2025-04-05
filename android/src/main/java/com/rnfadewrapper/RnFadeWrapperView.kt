@@ -31,10 +31,6 @@ class RnFadeWrapperView : ViewGroup {
   private var sizeBottom = 0f
   private var sizeLeft = 0f
 
-
-
-  private var subview: View? = null
-
   init {
     setWillNotDraw(false)
     paintTop.isAntiAlias = true
@@ -96,29 +92,24 @@ class RnFadeWrapperView : ViewGroup {
 
     if (tallest != null) {
 
-      if(subview == null){
-        subview = tallest
-      }
-
       val topF = tallest.top.toFloat()
       val rightF = tallest.right.toFloat()
       val bottomF = tallest.bottom.toFloat()
       val leftF = tallest.left.toFloat()
 
 
-      if (sizeTop > 0) {
-        val gradientTop = LinearGradient(
-          0f, topF, 0f, topF - sizeTop,
-          intArrayOf(fadeColor, Color.TRANSPARENT),
-          floatArrayOf(0f, 1f),
-          Shader.TileMode.CLAMP
-        )
-
-        paintTop.shader = gradientTop
-        canvas.drawRect(leftF, topF - sizeTop, rightF, topF, paintTop)
+      if (sizeTop != 0f) {
+          val gradientTop = LinearGradient(
+            0f, topF, 0f, topF - sizeTop,
+            intArrayOf(fadeColor, Color.TRANSPARENT),
+            floatArrayOf(0f, 1f),
+            Shader.TileMode.CLAMP
+          )
+          paintTop.shader = gradientTop
+          canvas.drawRect(leftF, topF - sizeTop, rightF, topF, paintTop)
       }
 
-      if (sizeRight > 0) {
+      if (sizeRight != 0f) {
         val gradientRight = LinearGradient(
           rightF, 0f, rightF + sizeRight, 0f,
           intArrayOf(fadeColor, Color.TRANSPARENT),
@@ -130,7 +121,7 @@ class RnFadeWrapperView : ViewGroup {
       }
 
 
-      if (sizeBottom > 0) {
+      if (sizeBottom != 0f) {
         val gradientBottom = LinearGradient(
           0f, bottomF, 0f, bottomF + sizeBottom,
           intArrayOf(fadeColor, Color.TRANSPARENT),
@@ -142,7 +133,7 @@ class RnFadeWrapperView : ViewGroup {
       }
 
 
-      if (sizeLeft > 0) {
+      if (sizeLeft != 0f) {
         val gradientLeft = LinearGradient(
           leftF, 0f, leftF - sizeLeft, 0f,
           intArrayOf(fadeColor, Color.TRANSPARENT),

@@ -5,6 +5,7 @@ import {
   Text,
   ScrollView,
   Dimensions,
+  FlatList,
 } from 'react-native';
 import { FadeWrapper } from 'rn-fade-wrapper';
 
@@ -32,57 +33,59 @@ export default function App() {
   return (
     <View style={styles.container}>
       <FadeWrapper
+        inward
+        size={20.0}
         color={'white'}
-        sizes={{ top: 50, bottom: 50, left: 50, right: 50 }}
-      >
-        <View
-          style={{
-            width: '100%',
-            backgroundColor: 'white',
-            alignSelf: 'center',
-            alignItems: 'center',
-            zIndex: 20,
-          }}
-        >
-          <Text>HEADER TITLE</Text>
-        </View>
-      </FadeWrapper>
-      <ScrollView style={{ flex: 1 }}>
-        {data.map((item, index) => (
-          <View
-            key={index}
-            style={{
-              width: '100%',
-              paddingVertical: 20,
-              paddingHorizontal: 10,
-              backgroundColor: 'grey',
-              marginTop: 10,
-            }}
-          >
-            <Text>{item}</Text>
-          </View>
-        ))}
-      </ScrollView>
-      <FadeWrapper
-        color={'white'}
+        // orientation={'horizontal'}
         sizes={{
-          top: 50,
+          top: 20,
+          right: 20,
+          bottom: 20,
+          left: 20,
         }}
+        // orientation="horizontal"
+        // sizes={{ right: 50 }}
+        // sizes={{
+        //   top: 20,
+        //   right: 20,
+        //   bottom: 20,
+        //   left: 20,
+        // }}
       >
-        <View
-          style={{
-            width: '100%',
-            // position: 'absolute',
-            // top: Dimensions.get('window').height - 80,
-            alignSelf: 'center',
-            backgroundColor: 'white',
-            // width: '100%',
-          }}
-        >
-          <TouchableOpacity style={styles.button}>
-            <Text style={{ color: 'white' }}>PRESS</Text>
-          </TouchableOpacity>
-        </View>
+        {/* <View style={styles.box} /> */}
+        <FlatList
+          data={data}
+          renderItem={({ item }) => (
+            <View
+              style={{
+                width: '100%',
+                paddingVertical: 20,
+                paddingHorizontal: 10,
+                backgroundColor: 'grey',
+                marginTop: 10,
+              }}
+            >
+              <Text>{item}</Text>
+            </View>
+          )}
+          keyExtractor={(item, index) => index.toString()}
+        />
+        {/* <ScrollView style={{ flex: 1, backgroundColor: 'red' }}>
+          {data.map((item, index) => (
+            <View
+              key={index}
+              style={{
+                width: '100%',
+                paddingVertical: 20,
+                paddingHorizontal: 10,
+                backgroundColor: 'grey',
+                marginTop: 10,
+              }}
+            >
+              <Text>{item}</Text>
+            </View>
+          ))}
+        </ScrollView> */}
       </FadeWrapper>
     </View>
   );
@@ -91,14 +94,14 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    paddingTop: 50,
-    // alignItems: 'center',
-    // justifyContent: 'center',
+    paddingTop: 200,
   },
   box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
+    width: 200,
+    height: 100,
+    // marginVertical: 20,
+    backgroundColor: 'green',
+    alignSelf: 'center',
   },
   button: {
     width: 200,

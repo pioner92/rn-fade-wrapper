@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { default as RnFadeWrapperView__ } from './RnFadeWrapperViewNativeComponent';
+import { ViewStyle } from 'react-native';
 export * from './RnFadeWrapperViewNativeComponent';
 
 export enum FadeWrapperOrientation {
@@ -20,6 +21,8 @@ interface IProps {
   size?: number;
   sizes?: TFadeSizes;
   children: React.ReactNode;
+  inward?: boolean;
+  style?: ViewStyle;
 }
 
 const defaultStyle = {
@@ -46,8 +49,10 @@ export const FadeWrapper: React.FC<React.PropsWithChildren<IProps>> = ({
   size = 20,
   sizes,
   orientation = FadeWrapperOrientation.VERTICAL,
+  inward = false,
+  style,
 }) => {
-  const props = useMemo(() => {
+  const preparedSizes = () => {
     if (sizes) {
       return makePreset(
         sizes.top ?? 0,
@@ -66,10 +71,29 @@ export const FadeWrapper: React.FC<React.PropsWithChildren<IProps>> = ({
     }
 
     return makePreset(size, 0, size, 0);
-  }, [size, orientation, sizes]);
+  };
+
+  const withInward = useMemo(() => {
+    const __sizes = preparedSizes();
+
+    if (inward) {
+      return {
+        sizeTop: -__sizes.sizeTop,
+        sizeRight: -__sizes.sizeRight,
+        sizeBottom: -__sizes.sizeBottom,
+        sizeLeft: -__sizes.sizeLeft,
+      };
+    }
+    return __sizes;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [size, orientation, sizes, inward]);
+
+  const __style = useMemo(() => {
+    return [defaultStyle, style];
+  }, [style]);
 
   return (
-    <RnFadeWrapperView__ {...props} color={color} style={defaultStyle}>
+    <RnFadeWrapperView__ {...withInward} color={color} style={__style}>
       {children}
     </RnFadeWrapperView__>
   );

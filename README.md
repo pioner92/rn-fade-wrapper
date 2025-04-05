@@ -45,9 +45,11 @@ const MyComponent = () => {
     <FadeWrapper
       color="#ffffff"
       size={24}
-      orientation={'vertical'} // default
+      orientation={"vertical"} // default
     >
-      <ScrollView>{/* your content */}</ScrollView>
+     <View>
+      <Text>...</Text>
+     </View>
     </FadeWrapper>
   );
 };
@@ -61,6 +63,7 @@ const MyComponent = () => {
 |--------------|----------------------------|----------------------|-------------|
 | `color`      | `string`                   | `"#ffffff"`          | Fade color (default is white) |
 | `size`       | `number`                   | `20`                 | Size of the fade in points |
+| `inward`       | `boolean`                   | `false`                 | Makes the gradient fade inward (toward the center) instead of outward |
 | `sizes`      | `{ top?: number, right?: number, bottom?: number, left?: number }` | `undefined` | Custom sizes for each side (overrides `size` and `orientation`) |
 | `orientation`| `'horizontal'` \| `'vertical'` | `'vertical'`     | Directional preset: adds fade to left/right or top/bottom |
 | `children`   | `React.ReactNode`          | —                    | Wrapped content |
@@ -76,19 +79,20 @@ const MyComponent = () => {
 ```tsx
 <FadeWrapper
   color="black"
+  inward
   sizes={{ top: 20, bottom: 30 }}
 >
   <FlatList ... />
 </FadeWrapper>
 ```
 
-### Horizontal fade:
+### ScrollView fade:
 
 ```tsx
 <FadeWrapper
   color="rgba(0,0,0,0.5)"
   size={16}
-  orientation={'horizontal'}
+  inward
 >
   <ScrollView horizontal ... />
 </FadeWrapper>
