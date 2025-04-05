@@ -5,6 +5,23 @@
 
 A simple and performant native wrapper component for React Native that adds customizable **fade gradients** to the edges of its children. Ideal for scrollable content or overlays where subtle fading is needed.
 
+<div align="center" style="max-width: 400px; margin: auto;">
+  <a href="https://www.npmjs.com/package/rn-fade-wrapper">
+    <img src="https://img.shields.io/npm/v/rn-fade-wrapper.svg" alt="npm version" />
+  </a>
+  <!-- <a href="https://www.npmjs.com/package/rn-fade-wrapper">
+    <img src="https://img.shields.io/npm/dm/rn-fade-wrapper.svg" alt="npm downloads" />
+  </a> -->
+  <img src="https://img.shields.io/badge/platform-iOS-blue?logo=apple" alt="iOS" />
+  <img src="https://img.shields.io/badge/platform-Android-green?logo=android" alt="Android" />
+  <img src="https://img.shields.io/badge/types-TypeScript-blue?logo=typescript" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/license-MIT-yellow.svg" alt="MIT License" />
+  <a href="https://bundlephobia.com/result?p=rn-fade-wrapper">
+    <img src="https://img.shields.io/bundlephobia/minzip/rn-fade-wrapper" alt="Bundle size" />
+  </a>
+</div>
+
+
 ## ✨ Features
 
 - Native fade gradients using Android and iOS layers
