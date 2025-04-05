@@ -8,7 +8,7 @@ import java.util.ArrayList
 
 class RnFadeWrapperViewPackage : ReactPackage {
   override fun createViewManagers(reactContext: ReactApplicationContext): List<ViewManager<*, *>> {
-    val viewManagers: MutableList<ViewManager<*, *>> = ArrayList()
+    val viewManagers: MutableList<ViewManager<*, *>> = java.util.ArrayList()
     viewManagers.add(RnFadeWrapperViewManager())
     return viewManagers
   }

@@ -19,7 +19,13 @@ buildscript {
 apply plugin: "com.android.library"
 apply plugin: "kotlin-android"
 
-apply plugin: "com.facebook.react"
+def isNewArchitectureEnabled() {
+  return project.hasProperty("newArchEnabled") && project.newArchEnabled == "true"
+}
+
+if (isNewArchitectureEnabled()) {
+  apply plugin: "com.facebook.react"
+}
 
 def getExtOrIntegerDefault(name) {
   return rootProject.ext.has(name) ? rootProject.ext.get(name) : (project.properties["RnFadeWrapper_" + name]).toInteger()
@@ -50,6 +56,7 @@ android {
   defaultConfig {
     minSdkVersion getExtOrIntegerDefault("minSdkVersion")
     targetSdkVersion getExtOrIntegerDefault("targetSdkVersion")
+    buildConfigField "boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString()
   }
 
   buildFeatures {
@@ -73,10 +80,17 @@ android {
 
   sourceSets {
     main {
-      java.srcDirs += [
-        "generated/java",
-        "generated/jni"
-      ]
+      if (isNewArchitectureEnabled()) {
+        java.srcDirs += [
+          "src/newArch/java",
+          "generated/java",
+          "generated/jni"
+        ]
+      } else {
+        java.srcDirs += [
+          "src/oldArch/java"
+        ]
+      }
     }
   }
 }
@@ -93,8 +107,10 @@ dependencies {
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
 
+if(isNewArchitectureEnabled()){
 react {
   jsRootDir = file("../src/")
   libraryName = "RnFadeWrapperView"
   codegenJavaPackageName = "com.rnfadewrapper"
+}
 }
