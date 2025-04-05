@@ -1,4 +1,7 @@
 # Fade wrapper for React Native
+<p align="center">
+<img src="./assets/img.png" width="700" alt="react-native-auto-skeleton demo" />
+</p>
 
 A simple and performant native wrapper component for React Native that adds customizable **fade gradients** to the edges of its children. Ideal for scrollable content or overlays where subtle fading is needed.
 
