@@ -1,6 +1,6 @@
 {
   "name": "rn-fade-wrapper",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "fade wrapper",
   "main": "./lib/commonjs/index.js",
   "module": "./lib/module/index.js",
