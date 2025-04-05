@@ -94,7 +94,7 @@ const MyComponent = () => {
   size={16}
   inward
 >
-  <ScrollView horizontal ... />
+  <ScrollView  ... />
 </FadeWrapper>
 ```
 
