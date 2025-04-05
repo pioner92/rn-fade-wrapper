@@ -63,6 +63,7 @@ const MyComponent = () => {
 |--------------|----------------------------|----------------------|-------------|
 | `color`      | `string`                   | `"#ffffff"`          | Fade color (default is white) |
 | `size`       | `number`                   | `20`                 | Size of the fade in points |
+| `style`       | `ViewStyle`                   | `zIndex:2`                 | Regular ViewStyle `{flex:1}` |
 | `inward`       | `boolean`                   | `false`                 | Makes the gradient fade inward (toward the center) instead of outward |
 | `sizes`      | `{ top?: number, right?: number, bottom?: number, left?: number }` | `undefined` | Custom sizes for each side (overrides `size` and `orientation`) |
 | `orientation`| `'horizontal'` \| `'vertical'` | `'vertical'`     | Directional preset: adds fade to left/right or top/bottom |
