@@ -1,17 +1,15 @@
-# Fade wrapper for React Native
+# rn-fade-wrapper
+
 <p align="center">
-<img src="./assets/img.png" width="700" alt="react-native-auto-skeleton demo" />
+  <img src="./assets/img.png" width="700" alt="React Native fade gradient wrapper demo" />
 </p>
 
-A simple and performant native wrapper component for React Native that adds customizable **fade gradients** to the edges of its children. Ideal for scrollable content or overlays where subtle fading is needed.
+**`rn-fade-wrapper`** is a simple, highly-performant React Native component that adds smooth, customizable **fade gradients** to the edges of any content. Perfect for enhancing the user experience in scrollable containers, lists, carousels, modals, or any view with overflowing content.
 
 <div align="center" style="max-width: 400px; margin: auto;">
   <a href="https://www.npmjs.com/package/rn-fade-wrapper">
     <img src="https://img.shields.io/npm/v/rn-fade-wrapper.svg" alt="npm version" />
   </a>
-  <!-- <a href="https://www.npmjs.com/package/rn-fade-wrapper">
-    <img src="https://img.shields.io/npm/dm/rn-fade-wrapper.svg" alt="npm downloads" />
-  </a> -->
   <img src="https://img.shields.io/badge/platform-iOS-blue?logo=apple" alt="iOS" />
   <img src="https://img.shields.io/badge/platform-Android-green?logo=android" alt="Android" />
   <img src="https://img.shields.io/badge/types-TypeScript-blue?logo=typescript" alt="TypeScript" />
@@ -21,13 +19,16 @@ A simple and performant native wrapper component for React Native that adds cust
   </a>
 </div>
 
+---
 
 ## ✨ Features
 
-- Native fade gradients using Android and iOS layers
-- Support for **horizontal** and **vertical** fading
-- Customizable **color** and **size** per side
-- Simple to use: just wrap your content
+- ⚡ Native rendering for **iOS** and **Android**
+- 🔁 Supports **vertical** and **horizontal** gradient directions
+- 🎨 Fully **customizable fade size and color** (per side or uniform)
+- ↕️ Optional `inward` mode to fade **towards content** instead of outward
+- 🧩 Simple API: drop-in wrapper with intuitive props
+- 💪 Great performance with low overhead — ideal for scroll views and animations
 
 ---
 
@@ -45,28 +46,30 @@ npm install rn-fade-wrapper
 
 ---
 
-## 📱 Platform support
+## 📱 Platform Support
 
 | Platform | Old Arch | Fabric |
 |----------|----------|--------|
 | iOS      | ✅        | ✅      |
 | Android  | ✅        | ✅      |
 
-## 🚀 Usage
+---
+
+## 🚀 Quick Start
 
 ```tsx
-import { FadeWrapper} from 'rn-fade-wrapper';
+import { FadeWrapper } from 'rn-fade-wrapper';
 
 const MyComponent = () => {
   return (
     <FadeWrapper
       color="#ffffff"
       size={24}
-      orientation={"vertical"} // default
+      orientation="vertical"
     >
-     <View>
-      <Text>...</Text>
-     </View>
+      <ScrollView>
+        <Text>Fading edges example</Text>
+      </ScrollView>
     </FadeWrapper>
   );
 };
@@ -74,26 +77,25 @@ const MyComponent = () => {
 
 ---
 
-## 🧹 Props
+## 🧩 Props
 
-| Prop         | Type                       | Default              | Description |
+| Prop         | Type                       | Default                     | Description |
 |--------------|----------------------------|----------------------|-------------|
-| `color`      | `string`                   | `"#ffffff"`          | Fade color (default is white) |
-| `size`       | `number`                   | `20`                 | Size of the fade in points |
-| `style`       | `ViewStyle`                   | `zIndex:2`                 | Regular ViewStyle `{flex:1}` |
-| `inward`       | `boolean`                   | `false`                 | Makes the gradient fade inward (toward the center) instead of outward |
-| `sizes`      | `{ top?: number, right?: number, bottom?: number, left?: number }` | `undefined` | Custom sizes for each side (overrides `size` and `orientation`) |
-| `orientation`| `'horizontal'` \| `'vertical'` | `'vertical'`     | Directional preset: adds fade to left/right or top/bottom |
-| `children`   | `React.ReactNode`          | —                    | Wrapped content |
+| `color`      | `string`                   | `"#ffffff"`          | Fade color (can be any valid color string) |
+| `size`       | `number`                   | `20`                 | Uniform fade size in points |
+| `style`      | `ViewStyle`                | `{ zIndex: 2 }`      | Custom style applied to the wrapper view |
+| `inward`     | `boolean`                  | `false`              | Makes the gradient fade inward (towards the center) instead of outward |
+| `sizes`      | `{ top?: number, right?: number, bottom?: number, left?: number }` | `undefined` | Specific fade sizes per edge (overrides `size` and `orientation`) |
+| `orientation`| `'horizontal' \| 'vertical'` | `'vertical'`       | Preset for direction: applies `size` to top/bottom or left/right |
+| `children`   | `React.ReactNode`          | —                    | Your wrapped content |
 
-> If `sizes` is provided, it overrides `size` and `orientation`.
+> **Note:** `sizes` takes precedence over both `size` and `orientation`.
 
 ---
 
 ## 🎛 Examples
 
-### Custom side fade:
-
+### 🎯 Custom sides + inward fade:
 ```tsx
 <FadeWrapper
   color="black"
@@ -104,35 +106,36 @@ const MyComponent = () => {
 </FadeWrapper>
 ```
 
-### ScrollView fade:
-
+### 📜 Horizontal scroll fade:
 ```tsx
 <FadeWrapper
   color="rgba(0,0,0,0.5)"
   size={16}
-  inward
+  orientation="horizontal"
 >
-  <ScrollView  ... />
+  <ScrollView horizontal>
+    {/* content */}
+  </ScrollView>
 </FadeWrapper>
 ```
 
 ---
 
-## 🛠 Under the hood
+## 🛠 Under the Hood
 
-- Implemented with native `UIView` / `ViewGroup` layers for high performance
-- Uses custom `LinearGradient` rendering on Android and `CAGradientLayer` on iOS
-- Minimal runtime overhead — great for scroll views or high-FPS use cases
-
----
-
-## 💡 Tip
-
-You can use `FadeWrapper` inside scrollable containers to create a subtle **"content overflow" indication**.
+- **iOS:** Uses `CAGradientLayer` inside native `UIView`
+- **Android:** Draws `LinearGradient` on custom `ViewGroup` using Canvas
+- Handles layout and re-renders with platform-specific logic for consistency
 
 ---
 
-## 📓 License
+## 💡 UX Tip
 
-MIT
+Use `rn-fade-wrapper` to subtly indicate content overflow — especially in carousels, scroll views, and horizontal sliders. Gradients help hint to the user that there's more to scroll, improving engagement.
+
+---
+
+## 📘 License
+
+MIT — free to use, improve and contribute 🎉
 
