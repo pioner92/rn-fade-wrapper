@@ -83,7 +83,7 @@ const MyComponent = () => {
 |--------------|----------------------------|----------------------|-------------|
 | `color`      | `string`                   | `"#ffffff"`          | Fade color (can be any valid color string) |
 | `size`       | `number`                   | `20`                 | Uniform fade size in points |
-| `style`      | `ViewStyle`                | `{ zIndex: 2 }`      | Custom style applied to the wrapper view |
+| `style`      | `ViewStyle`                | `{ zIndex: 2 }`      | Custom style applied to the wrapper view |
 | `inward`     | `boolean`                  | `false`              | Makes the gradient fade inward (towards the center) instead of outward |
 | `sizes`      | `{ top?: number, right?: number, bottom?: number, left?: number }` | `undefined` | Specific fade sizes per edge (overrides `size` and `orientation`) |
 | `orientation`| `'horizontal' \| 'vertical'` | `'vertical'`       | Preset for direction: applies `size` to top/bottom or left/right |
