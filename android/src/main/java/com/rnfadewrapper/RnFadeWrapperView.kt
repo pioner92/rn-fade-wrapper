@@ -31,6 +31,8 @@ class RnFadeWrapperView : ViewGroup {
   private var sizeBottom = 0f
   private var sizeLeft = 0f
 
+  private var screenDensity = context.resources.displayMetrics.density
+
   init {
     setWillNotDraw(false)
     paintTop.isAntiAlias = true
@@ -46,22 +48,22 @@ class RnFadeWrapperView : ViewGroup {
   }
 
   fun setTopSize(value: Float) {
-    this.sizeTop = value
+    this.sizeTop = value * screenDensity
     invalidate()
   }
 
   fun setRightSize(value: Float) {
-    this.sizeRight = value
+    this.sizeRight = value * screenDensity
     invalidate()
   }
 
   fun setBottomSize(value: Float) {
-    this.sizeBottom = value
+    this.sizeBottom = value * screenDensity
     invalidate()
   }
 
   fun setLeftSize(value: Float) {
-    this.sizeLeft = value
+    this.sizeLeft = value * screenDensity
     invalidate()
   }
 
