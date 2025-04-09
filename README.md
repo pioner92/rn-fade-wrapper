@@ -44,6 +44,10 @@ or
 npm install rn-fade-wrapper
 ```
 
+### Expo
+
+This library works in Expo (with `expo prebuild`) without additional configuration.
+
 ---
 
 ## 📱 Platform Support
