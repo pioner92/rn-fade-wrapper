@@ -1,6 +1,6 @@
 {
   "name": "rn-fade-wrapper",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "🔥 Fade gradient wrapper for React Native scrollable views and overlays on iOS and Android.",
   "main": "./lib/commonjs/index.js",
   "module": "./lib/module/index.js",
