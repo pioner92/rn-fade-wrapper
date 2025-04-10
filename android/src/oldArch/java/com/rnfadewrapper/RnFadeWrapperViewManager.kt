@@ -6,10 +6,11 @@ import com.facebook.react.module.annotations.ReactModule
 import com.facebook.react.uimanager.ThemedReactContext
 import com.facebook.react.uimanager.ViewGroupManager
 import com.facebook.react.uimanager.annotations.ReactProp
+import com.facebook.react.bridge.ReactApplicationContext
 
 
 @ReactModule(name = RnFadeWrapperViewManager.Companion.NAME)
-class RnFadeWrapperViewManager : ViewGroupManager<RnFadeWrapperView>() {
+class RnFadeWrapperViewManager(private val context: ReactApplicationContext) : ViewGroupManager<RnFadeWrapperView>() {
 
   override fun getName(): String {
     return NAME
@@ -21,13 +22,11 @@ class RnFadeWrapperViewManager : ViewGroupManager<RnFadeWrapperView>() {
 
   @ReactProp(name = "color")
    fun setColor(view: RnFadeWrapperView?, value: String?) {
-
      val color = try {
        if (value != null) Color.parseColor(value) else  Color.GRAY
      } catch (e: IllegalArgumentException) {
        Color.WHITE
      }
-
      view?.setColor(color)
    }
 
