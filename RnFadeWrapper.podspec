@@ -16,6 +16,8 @@ Pod::Spec.new do |s|
   s.source_files    = "ios/**/*.{m,mm,cpp,swift}"
   s.private_header_files = "ios/generated/**/*.h"
 
+  s.swift_version = "5.0"
+
   s.pod_target_xcconfig = {
     "DEFINES_MODULE" => "YES",
     "SWIFT_COMPILATION_MODE" => "wholemodule",
