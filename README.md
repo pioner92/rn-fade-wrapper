@@ -1,4 +1,4 @@
-# React Native Fade Wrapper
+# React Native fade gradient wrapper
 
 <p align="center">
   <img src="./assets/img.png" width="700" alt="React Native fade gradient wrapper demo" />
