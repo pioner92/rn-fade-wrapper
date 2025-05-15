@@ -5,7 +5,6 @@ module.exports = {
   dependency: {
     platforms: {
       android: {
-        javaPackageName: 'com.rnfadewrapper',
         cmakeListsPath: 'generated/jni/CMakeLists.txt',
       },
     },
