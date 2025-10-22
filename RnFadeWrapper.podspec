@@ -14,7 +14,6 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/pioner92/rn-fade-wrapper.git", :tag => "#{s.version}" }
 
   s.source_files    = "ios/**/*.{m,mm,cpp,swift}"
-  s.private_header_files = "ios/generated/**/*.h"
 
   s.swift_version = "5.0"
 

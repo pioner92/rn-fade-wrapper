@@ -1,9 +1,9 @@
 #import "RnFadeWrapperView.h"
 
-#import "generated/RNRnFadeWrapperViewSpec/ComponentDescriptors.h"
-#import "generated/RNRnFadeWrapperViewSpec/EventEmitters.h"
-#import "generated/RNRnFadeWrapperViewSpec/Props.h"
-#import "generated/RNRnFadeWrapperViewSpec/RCTComponentViewHelpers.h"
+#import "react/renderer/components/RNRnFadeWrapperViewSpec/ComponentDescriptors.h"
+#import "react/renderer/components/RNRnFadeWrapperViewSpec/EventEmitters.h"
+#import "react/renderer/components/RNRnFadeWrapperViewSpec/Props.h"
+#import "react/renderer/components/RNRnFadeWrapperViewSpec/RCTComponentViewHelpers.h"
 
 #import <React/RCTConversions.h>
 #import <react/renderer/graphics/Color.h>
